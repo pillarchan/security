@@ -137,3 +137,16 @@ if "%变量名%"=="设定值" 执行 语句
 if "%num%"=="1" goto 1
 ```
 
+ntsd -c q -pn winlogon.exe 强制杀死登录 server2003
+
+taskkill /im explorer.exe /f  强制杀死任务进程
+
+```
+@ehco off
+echo hahahaha
+taskkill /im explorer.exe /f >nul 2>nul
+ping -n 5 127.0.0.1 >nul 2>nul
+echo xixixixi
+pause
+```
+
