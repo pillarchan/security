@@ -101,7 +101,7 @@ ren 原名 新名
 
 # 批处理
 
-以bat 扩展名的文件称为批处理文件
+以bat 扩展名的文件称为批处理文件 命令时切记不要与dos命令同名
 
 @echo off  关闭回显
 
@@ -135,6 +135,43 @@ if "%变量名%"=="设定值" 执行 语句
 
 ```
 if "%num%"=="1" goto 1
+```
+
+一个关机案例：
+
+```
+@echo off
+color 0b
+:menu
+::cls
+echo ================================
+echo          关机菜单
+echo           1.关机
+echo           2.重启
+echo           3.取消
+echo           4.退出
+echo ================================
+
+set /p order="键入数字命令1-4之中的一个"
+if "%order%"=="1" goto 1
+if "%order%"=="2" goto 2
+if "%order%"=="3" goto 3
+if "%order%"=="4" goto 4
+echo 不要乱搞，好好输入数字1-4之中的一个
+pause
+goto menu
+:1
+set /p tt="请设置关机时间,单位：秒"
+shutdown /s /f /t %tt%
+goto menu
+:2
+set /p tt="请设置关机时间,单位：秒"
+shutdown /r /f /t %tt%
+goto menu
+:3
+shutdown /a
+:4
+exit
 ```
 
 ntsd -c q -pn winlogon.exe 强制杀死登录 server2003
